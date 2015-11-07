@@ -6,15 +6,15 @@ order: 18
 
 Vue.js コアライブラリは、View レイヤーにフォーカスされて柔軟に設計されており、全てのアプリケーションレベルのアーキテクチャと干渉しないライブラリです。これは既存プロジェクトとの統合のために素晴らしいことができますが、スクラッチからの大規模アプリケーションを構築する場合は、構築経験の少ない開発者にとって悩ましい問題にもなります。
 
-Vue.js のエコシステムは、Vue で大規模なシングルページアプリケーション (SPA: single page application) を構築する方法のライブラリのツールセットを提供します。このパートは、私達が少しだけ"フレームワーク"のように感じるようなものを開始しますが、それは本当にごく推奨するリストです。今までどおりに積み重ねられた各パートにおいて使用するものを選ぶとよいでしょう。
+Vue.js のエコシステムは、Vue で大規模なシングルページアプリケーション (SPA: single page application) を構築する方法のライブラリのツールセットを提供します。このパートでは、"フレームワーク"のようなものを紹介しますが、あくまで推奨される使い方の一例にすぎません。これまでの各パートで紹介した手法を必要に応じて利用するとよいでしょう。
 
 ## モジュール化
 
-大規模なプロジェクトの場合、あなたのコードをよく整理するためにモジュール化ビルドシステムを利用することが必要です。そうすることの推奨するアプローチは、CommonJS または ES6 モジュールにあなたのソースコードを書いて、[Webpack](http://webpack.github.io/) または [Browserify](http://browserify.org/) を使用してそれらをバンドルします。
+大規模なプロジェクトの場合、ソースコードを整理するためにモジュール化ビルドシステムを利用することが必要です。ソースコードを CommonJS または ES6 のモジュール形式で書き、[Webpack](http://webpack.github.io/) または [Browserify](http://browserify.org/) を使用して、モジュール化したソースコードをバンドル(結合)することを推奨します。
 
-Webpack と Browserify は単にモジュールバンドラ以上のものです。それら両方は、他のプリプロセッサでソースコードを変換することができるソース変換 API を提供します。例えば、[babel-loader](https://github.com/babel/babel-loader) または [babelify](https://github.com/babel/babelify) を使用して、将来サポートされる ES2015/2016 構文でコードを書くことができます。
+Webpack と Browserify は単なるモジュールバンドラ以上のことができます。どちらも、他のプリプロセッサで書かれたソースコードを実行可能にする、変換 API を提供しています。例えば、[babel-loader](https://github.com/babel/babel-loader) または [babelify](https://github.com/babel/babelify) を使用して、将来サポートされる ES2015/2016 構文でコードを書くことができます。
 
-これまでにそれらを使用したことがない場合は、私は、いくつかのチュートリアルを通って、モジュールバンドラの概念に精通して得て、最新の ECMAScript の機能を使用して書き始めるのを、大いにお勧めします。
+これまでこのようなビルドシステムを使用したことがない場合は、いくつかのチュートリアルを行って、モジュールバンドラの概念に慣れ親しんでから、最新の ECMAScript の機能を使用して書き始めることをお勧めします。
 
 ## 単一ファイルコンポーネント
 
@@ -36,9 +36,9 @@ GitHub のビルドセットアップの例を探すことができます。
 
 ## ルーティング
 
-シングルページアプリケーションについては、現在テクニカルプレビューな[オフィシャル vue-router ライブラリ](https://github.com/vuejs/vue-router)の使用を推奨します。詳細については、どうか vue-router の[ドキュメンテーション](http://vuejs.github.io/vue-router/)を参照してください。
+シングルページアプリケーションについては、現在テクニカルプレビューである[オフィシャル vue-router ライブラリ](https://github.com/vuejs/vue-router)の使用を推奨します。詳細については、vue-router の[ドキュメンテーション](http://vuejs.github.io/vue-router/)を参照してください。
 
-もし、いくつかとてもシンプルなルーティングのロジックを必要としている場合は、ハッシュチェンジへのイベントリスニングと、動的なコンポーネントを利用することでそれを実装することができます。
+もし、シンプルなルーティングのロジックを必要としているのであれば、ハッシュチェンジのイベントリスニングと、動的なコンポーネントを利用することで、実装することができます。
 
 **例：:**
 
@@ -184,7 +184,7 @@ Vue.js の縮小されたスタンドアローンビルド版は、既に小さ�
 
 ### Webpack
 
-警告ブロックが自動的に UglifyJS によって縮小中に削除されるように、プロダクション環境を示すために Webpack の [DefinePlugin](http://webpack.github.io/docs/list-of-plugins.html#defineplugin) を使ってください。設定例:
+警告ブロックが UglifyJS による縮小中に自動的に削除されるように、プロダクション環境を示すために Webpack の [DefinePlugin](http://webpack.github.io/docs/list-of-plugins.html#defineplugin) を使ってください。設定例:
 
 ``` js
 var webpack = require('webpack')
@@ -217,4 +217,4 @@ NODE_ENV=production browserify -e main.js | uglifyjs -c -m > build.js
 
 ## アプリケーションの例
 
-[Vue.js Hackernews Clone](https://github.com/vuejs/vue-hackernews) は、Webpack と vue-loader を利用したソースコード管理と、vue-router を利用したルーティングの基本設計、また HackerNews の Firebase API をバックエンドとして利用したサンプルアプリケーションです。決して大きなアプリケーションではないですが、このページで説明する概念の併用を実証しています。
+[Vue.js Hackernews Clone](https://github.com/vuejs/vue-hackernews) は、Webpack と vue-loader を利用したソースコード管理と、vue-router を利用したルーティングの基本設計、また HackerNews の Firebase API をバックエンドとして利用したサンプルアプリケーションです。決して大きなアプリケーションではないですが、このページで紹介した手法を用いています。
